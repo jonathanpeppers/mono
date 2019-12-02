@@ -629,6 +629,7 @@ mono_config_for_assembly_internal (MonoImage *assembly)
 	mono_config_parse_file_with_context (&state, cfg_name);
 	g_free (cfg_name);
 
+#ifndef TARGET_ANDROID
 	cfg_name = g_strdup_printf ("%s.config", mono_image_get_name (assembly));
 	const char *cfg_dir = mono_get_config_dir ();
 	if (!cfg_dir) {
@@ -652,6 +653,7 @@ mono_config_for_assembly_internal (MonoImage *assembly)
 			break;
 	}
 	g_free (cfg_name);
+#endif
 }
 
 /**
